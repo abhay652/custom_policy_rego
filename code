@@ -1,0 +1,84 @@
+package rules
+
+import data.dataset
+
+# This file implements three different queries that control
+#   the PAM module's behavior.  The PAM module will query
+#   'display', 'pull', and 'authz'
+# Note: This does not illustrate authentication, but will be handled later.
+
+################################################
+# Query 1: What prompts to show the user
+display = {"display_spec": display_spec}
+display_spec = [
+    {
+        "message": "Welcome to the OPA-PAM demonstration.",
+        "style": "info",
+    },
+    {
+        "message": "Please enter your secret: ",
+        "style": "prompt_echo_off",
+        "key": "secret",
+    },
+    {
+        "message": "Please enter your Jira ticket: ",
+        "style": "prompt_echo_on",
+        "key": "jira",
+    },
+
+
+]
+
+
+################################################
+# Query 2: What external information to include as part of authz input
+pull = {"files": files, "env_vars": env_vars}
+
+# Which files should be loaded into the context?
+files = ["/etc/host_identity.json"]
+
+# Which environment variables should be loaded into the context?
+env_vars = []
+
+
+
+################################################
+# Query 3: Authorization decision
+authz = {"allow": allow, "errors": errors}
+
+
+# By default, users are not authorized.
+default allow = false
+
+# Allow access to any user that has the "admin" role.
+#   Hardcoded for now; in reality would be injected as
+#   additional external data.
+roles["admin"] = ["ops"]
+roles["dev"] = ["charlie", "dave"]
+
+# Allow admins
+allow {
+    roles["admin"][_] == input.sysinfo.pam_username
+}
+
+# Allow developers on frontend hosts
+allow {
+    input.pull_responses.files["/etc/host_identity.json"].host_type == "frontend"
+    roles["dev"][_] == input.sysinfo.pam_username
+}
+
+# Allow if provided Jira ticket owner and username are the same
+allow {
+  j := jira(input.display_responses.jira)
+  j.owner == input.sysinfo.pam_username
+  j.labels.server == input.pull_responses.files["/etc/host_identity.json"].host_id
+}
+
+# Copy this for now.  Should be an HTTP callout
+jira("jira-654") = {"owner": "alice", "labels": {"server": "1234"}}
+jira("jira-321") = {"owner": "bob", "labels": {"server": "7890"}}
+
+# If the user is not authorized, then include an error message in the response.
+errors["Request denied by administrative policy"] {
+    not allow
+}
