@@ -5,3 +5,5 @@ api token custom
 qZ3tbxfLD_ziziChMQGCPVd3rzV6lnpSQ4SExMUJuGsCnw
 
 System ID: f0f8d0cb5f514373ab70b0e9dc92d165
+
+https://lznyt9.svc.styra.com/systems/f0f8d0cb5f514373ab70b0e9dc92d165/settings/general
