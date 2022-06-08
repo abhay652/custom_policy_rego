@@ -7,3 +7,20 @@ qZ3tbxfLD_ziziChMQGCPVd3rzV6lnpSQ4SExMUJuGsCnw
 System ID: f0f8d0cb5f514373ab70b0e9dc92d165
 
 https://lznyt9.svc.styra.com/systems/f0f8d0cb5f514373ab70b0e9dc92d165/settings/general
+
+
+opa-conf.yaml
+
+discovery:
+  name: discovery
+  prefix: /systems/SYSTEMID
+labels:
+  policy-type: custom/rules
+  system-id: f0f8d0cb5f514373ab70b0e9dc92d165
+  system-type: custom
+services:
+- credentials:
+    bearer:
+      token: qZ3tbxfLD_ziziChMQGCPVd3rzV6lnpSQ4SExMUJuGsCnw
+  name: styra
+  url: https://lznyt9.svc.styra.com/systems/f0f8d0cb5f514373ab70b0e9dc92d165
