@@ -45,3 +45,8 @@ curl 'localhost:8181/health?bundle=true'
 # Update Styra datasource
 
 curl -X PUT -H 'Content-Type: application/json' -H 'Authorization: Bearer 6unicM426yH2yivoNVQLldorAcSsfkwKR0kIXm4qRjuU_rROueH6B7S1PhaBh2EhQfoLZNYiomWkRVt_YQ8vNYlKxm-4nNv8_dc' 'https://lznyt9.svc.styra.com/v1/data/systems/f0f8d0cb5f514373ab70b0e9dc92d165/dataset' -d '{"key": "value"}'
+
+
+docker compose  script 
+
+curl -L "https://github.com/docker/compose/releases/download/1.24.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
