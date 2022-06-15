@@ -1,0 +1,18 @@
+# Download OPA for macOS
+
+curl -L -o opa https://github.com/open-policy-agent/opa/releases/latest/download/opa_darwin_amd64 && chmod 755 opa
+# Or download OPA for Linux
+
+curl -L -o opa https://github.com/open-policy-agent/opa/releases/latest/download/opa_linux_amd64 && chmod 755 opa
+# Download Styra configuration for OPA
+
+curl -H 'Authorization: Bearer 8QTSx6otJIpvyhkvZe95EH5pUeP15giysKuZ70h5-c9z0z3IHgrn_Fe6BPEXbDvIXVJyS1QSRsls5flJXJv6O9W7iimP5l0' -o opa-conf.yaml 'https://lznyt9.svc.styra.com/v1/systems/f844d502f52f4851af70544c1aaddd05/assets/opa-config'
+# Run OPA with Styra configuration
+
+opa run --server --config-file=opa-conf.yaml
+# Verify that OPA is running and accepting requests
+
+curl 'localhost:8181/health?bundle=true'
+# Update Styra datasource
+
+curl -X PUT -H 'Content-Type: application/json' -H 'Authorization: Bearer O-ROPhqoQGWZnKjyoYco_iJ8VT-qCMCxs6BYTQzvsvMcGXOjGFq0piPuy1GM-74E0sG9ozCYM5QytUCNYklZHjB_tlSHFMUTnpc' 'https://lznyt9.svc.styra.com/v1/data/systems/f844d502f52f4851af70544c1aaddd05/dataset' -d '{"key": "value"}'
