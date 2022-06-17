@@ -1,0 +1,11 @@
+# Download OPA
+
+# Install OPA locally--this works for mac but use xdg-open for linux
+open https://www.openpolicyagent.org/docs/latest/#running-opa
+# Download DAS-OPA configuration
+
+curl -H 'Authorization: Bearer NEL83MNo_sjSHhoYGUjftmUYPPVVuIOyIUUibxdiWsbMCfIzlOoCRz3cluP3FllPyHP5iGxhFcWZPvrz1eTaKk-HGV2OHv8aVj7sXA' -o opa-conf.yaml https://x8gy40.svc.styra.com/v1/systems/e92283169f5a41138c769d5550896340/assets/opaconfig.yaml
+# Run OPA with configuration
+
+# You can omit the configuration file if it is in the same directory
+opa run --server --config-file=opa-conf.yaml
