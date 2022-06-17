@@ -1,11 +1,8 @@
-# Download OPA
+# Download Docker image
 
-# Install OPA locally--this works for mac but use xdg-open for linux
-open https://www.openpolicyagent.org/docs/latest/#running-opa
-# Download DAS-OPA configuration
+docker pull styra/entitlements-samples:latest
+# Launch the Entitlements Playground
 
-curl -H 'Authorization: Bearer NEL83MNo_sjSHhoYGUjftmUYPPVVuIOyIUUibxdiWsbMCfIzlOoCRz3cluP3FllPyHP5iGxhFcWZPvrz1eTaKk-HGV2OHv8aVj7sXA' -o opa-conf.yaml https://x8gy40.svc.styra.com/v1/systems/e92283169f5a41138c769d5550896340/assets/opaconfig.yaml
-# Run OPA with configuration
-
-# You can omit the configuration file if it is in the same directory
-opa run --server --config-file=opa-conf.yaml
+docker run -i -p 8080:8080 -p 8123:8123 -e SAMPLE_APP=entz-playground -e DOCS_PORT=8080 -e API_PORT=8123 -e DAS_TOKEN='NEL83MNo_sjSHhoYGUjftmUYPPVVuIOyIUUibxdiWsbMCfIzlOoCRz3cluP3FllPyHP5iGxhFcWZPvrz1eTaKk-HGV2OHv8aVj7sXA' -e DAS_URL='https://x8gy40.svc.styra.com/' -e DAS_SYSTEM='e92283169f5a41138c769d5550896340' -t styra/entitlements-samples:latest
+# Open the playground in your browser at http://localhost:8123.
+# Visit https://github.com/StyraInc/entitlements-samples for details and other sample applications.
