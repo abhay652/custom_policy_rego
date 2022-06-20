@@ -1,0 +1,15 @@
+# To download docker compose 
+
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+
+# Download OPA for macOS
+
+curl -L -o opa https://github.com/open-policy-agent/opa/releases/latest/download/opa_darwin_amd64 && chmod 755 opa
+# Or download OPA for Linux
+
+curl -L -o opa https://github.com/open-policy-agent/opa/releases/latest/download/opa_linux_amd64 && chmod 755 opa
+
+
+# Run OPA with Styra configuration
+
+opa run --server --config-file=opa-conf.yaml
