@@ -6,3 +6,14 @@ docker pull styra/entitlements-samples:latest
 docker run -i -p 8080:8080 -p 8123:8123 -e SAMPLE_APP=entz-playground -e DOCS_PORT=8080 -e API_PORT=8123 -e DAS_TOKEN='NEL83MNo_sjSHhoYGUjftmUYPPVVuIOyIUUibxdiWsbMCfIzlOoCRz3cluP3FllPyHP5iGxhFcWZPvrz1eTaKk-HGV2OHv8aVj7sXA' -e DAS_URL='https://x8gy40.svc.styra.com/' -e DAS_SYSTEM='e92283169f5a41138c769d5550896340' -t styra/entitlements-samples:latest
 # Open the playground in your browser at http://localhost:8123.
 # Visit https://github.com/StyraInc/entitlements-samples for details and other sample applications.
+
+
+
+# Download Docker image
+
+docker pull styra/entitlements-samples:latest
+# Launch the Entitlements Playground
+
+docker run -i -p 8080:8080 -p 8123:8123 -e SAMPLE_APP=entz-playground -e DOCS_PORT=8080 -e API_PORT=8123 -e DAS_TOKEN='ESJz282DXlwX6OWu3GOTMY-HkD1WCITtojPXXXnnFb2zhWhxcTjC0lEtYE851vsjIPkmDwDNTatJdjZeDpDi0c_EVv3LVZX7IQGGVg' -e DAS_URL='https://x8gy40.svc.styra.com/' -e DAS_SYSTEM='bcd2ce4a5cbd4abdbb1d3fb8df623a83' -t styra/entitlements-samples:latest
+# Open the playground in your browser at http://localhost:8123.
+# Visit https://github.com/StyraInc/entitlements-samples for details and other sample applications.
