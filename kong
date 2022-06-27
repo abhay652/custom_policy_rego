@@ -1,0 +1,12 @@
+# 1. Install Custom Kong plugin for OPA
+
+curl -H 'Authorization: Bearer WKaqRXiH7H3HiN3wE5qyAX_EZK4yCW61RL5qf-kLsydqoQa3Fsqi99v2HYZJYLDmr1pDKVWr2IR_0YbEuAjLVMWSOMyvWq29_PiuHQ' https://x8gy40.svc.styra.com/v1/systems/d118ac703bca41db958f580fe43241fa/assets/custom-kong-plugin.yaml | kubectl apply -f -
+# 2. Configure Kong plugin for OPA authorization
+
+curl -H 'Authorization: Bearer WKaqRXiH7H3HiN3wE5qyAX_EZK4yCW61RL5qf-kLsydqoQa3Fsqi99v2HYZJYLDmr1pDKVWr2IR_0YbEuAjLVMWSOMyvWq29_PiuHQ' https://x8gy40.svc.styra.com/v1/systems/d118ac703bca41db958f580fe43241fa/assets/kong-plugin-config.yaml | kubectl apply -f -
+# 3. Configure OPA
+
+curl -H 'Authorization: Bearer WKaqRXiH7H3HiN3wE5qyAX_EZK4yCW61RL5qf-kLsydqoQa3Fsqi99v2HYZJYLDmr1pDKVWr2IR_0YbEuAjLVMWSOMyvWq29_PiuHQ' https://x8gy40.svc.styra.com/v1/systems/d118ac703bca41db958f580fe43241fa/assets/opa-config.yaml | kubectl apply -n kong -f -
+# 4. Install Styra Local Plane (SLP)
+
+curl -H 'Authorization: Bearer WKaqRXiH7H3HiN3wE5qyAX_EZK4yCW61RL5qf-kLsydqoQa3Fsqi99v2HYZJYLDmr1pDKVWr2IR_0YbEuAjLVMWSOMyvWq29_PiuHQ' https://x8gy40.svc.styra.com/v1/systems/d118ac703bca41db958f580fe43241fa/assets/slp-deployment.yaml | kubectl apply -n kong -f -
