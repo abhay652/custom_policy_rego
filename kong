@@ -16,6 +16,8 @@ curl -H 'Authorization: Bearer uaYoXwE8o4eZi0ENooAaCegGHEkO_qyhB8fOHcTsVzXs6SyXg
 helm upgrade kong-quickstart kong/kong -n kong -f opa-sidecar-values.yaml
 
 helm repo add kong https://charts.konghq.com && helm repo update && helm install kong-quickstart kong/kong -n kong --create-namespace
-
 export PROXY_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}" service -n kong demo-kong-proxy)
 
+curl -H 'Authorization: Bearer UBlhyAuaDnW-0ctTTFoqTEAu6i39Xqzaa7GPNLFCO7T2oCPorFLEioRwWqaVw1viQLdJDtA9-ubgm4mklV_S' https://x8gy40.svc.styra.com/v1/system-types/template.kong-gateway:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
+
+kubectl logs $(kubectl get pods -l app=client-load -o jsonpath='{.items..metadata.name}')
