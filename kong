@@ -11,7 +11,7 @@ curl -H 'Authorization: Bearer uaYoXwE8o4eZi0ENooAaCegGHEkO_qyhB8fOHcTsVzXs6SyXg
 
 curl -H 'Authorization: Bearer uaYoXwE8o4eZi0ENooAaCegGHEkO_qyhB8fOHcTsVzXs6SyXglsfBmHpnQ60f6Ile290vSpW8vFlbP62-MziczEKgGjJOJB_VutEkg' https://x8gy40.svc.styra.com/v1/systems/d118ac703bca41db958f580fe43241fa/assets/slp-deployment.yaml | kubectl apply -n kong -f -
 
-
+curl -H 'Authorization: Bearer uaYoXwE8o4eZi0ENooAaCegGHEkO_qyhB8fOHcTsVzXs6SyXglsfBmHpnQ60f6Ile290vSpW8vFlbP62-MziczEKgGjJOJB_VutEkg' https://x8gy40.svc.styra.com/v1/systems/d118ac703bca41db958f580fe43241fa/assets/opa-sidecar-values.yaml > opa-sidecar-values.yaml
 
 helm repo add kong https://charts.konghq.com && helm repo update && helm install kong-quickstart kong/kong -n kong --create-namespace
 
