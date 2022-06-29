@@ -15,3 +15,6 @@ curl -H 'Authorization: Bearer WKaqRXiH7H3HiN3wE5qyAX_EZK4yCW61RL5qf-kLsydqoQa3F
 
 
 helm repo add kong https://charts.konghq.com && helm repo update && helm install kong-quickstart kong/kong -n kong --create-namespace
+
+export PROXY_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}" service -n kong demo-kong-proxy)
+
