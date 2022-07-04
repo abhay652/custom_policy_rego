@@ -17,3 +17,8 @@ helm repo add kong https://charts.konghq.com && helm repo update && helm install
 # 5. Download Helm values.yaml file with OPA sidecar
 
 curl -H 'Authorization: Bearer Da9DxTm0bHVRXFJ6xXOZgRLhrncNjECw9-Mc6S1txDOi-3kjJYfwS0J7EiCSPDufIxSOT1nZXCgJYiFeatGpm0o_jQ9WmxZlvIPOwA' https://x8gy40.svc.styra.com/v1/systems/b6a38839fe194c7099db625035a4398b/assets/opa-sidecar-values.yaml > opa-sidecar-values.yaml
+
+
+# Copy command
+
+helm upgrade kong-quickstart kong/kong -n kong -f opa-sidecar-values.yaml
