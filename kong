@@ -1,3 +1,13 @@
+$ helm repo add kong https://charts.konghq.com
+$ helm repo update
+
+# Helm 2
+$ helm install kong/kong
+
+# Helm 3
+$ helm install kong/kong --generate-name --set ingressController.installCRDs=false
+
+
 # 1. Install Custom Kong plugin for OPA
 
 curl -H 'Authorization: Bearer Da9DxTm0bHVRXFJ6xXOZgRLhrncNjECw9-Mc6S1txDOi-3kjJYfwS0J7EiCSPDufIxSOT1nZXCgJYiFeatGpm0o_jQ9WmxZlvIPOwA' https://x8gy40.svc.styra.com/v1/systems/b6a38839fe194c7099db625035a4398b/assets/custom-kong-plugin.yaml | kubectl apply -f -
