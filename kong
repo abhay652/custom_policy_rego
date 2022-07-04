@@ -22,3 +22,7 @@ curl -H 'Authorization: Bearer Da9DxTm0bHVRXFJ6xXOZgRLhrncNjECw9-Mc6S1txDOi-3kjJ
 # Copy command
 
 helm upgrade kong-quickstart kong/kong -n kong -f opa-sidecar-values.yaml
+
+# Copy command
+
+curl -H 'Authorization: Bearer UBlhyAuaDnW-0ctTTFoqTEAu6i39Xqzaa7GPNLFCO7T2oCPorFLEioRwWqaVw1viQLdJDtA9-ubgm4mklV_S' https://x8gy40.svc.styra.com/v1/system-types/template.kong-gateway:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
