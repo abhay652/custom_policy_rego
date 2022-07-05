@@ -1,0 +1,9 @@
+# Configure Kong Mesh
+
+curl -H 'Authorization: Bearer YsZgITqd2gnKJh2hUwqfkFfApx-1M80Rplj3KvMZdYlZfNSfhjyRCHKF0L73wJnXPkSAJFnlxg9mh4zUYH2KZ1C9xyrkwq2YqKR0TQ' https://lznyt9.svc.styra.com/v1/systems/e20136a848af4987aaeee1e3f370ad3e/assets/configure-kong-mesh.yaml | kubectl apply -f - && kubectl rollout restart deployment -n kong-mesh-system kong-mesh-control-plane
+# Enable sidecar-injection on default namespace
+
+kubectl annotate namespace default kuma.io/sidecar-injection=enabled
+# Install Styra Local Plane (SLP)
+
+curl -H 'Authorization: Bearer YsZgITqd2gnKJh2hUwqfkFfApx-1M80Rplj3KvMZdYlZfNSfhjyRCHKF0L73wJnXPkSAJFnlxg9mh4zUYH2KZ1C9xyrkwq2YqKR0TQ' https://lznyt9.svc.styra.com/v1/systems/e20136a848af4987aaeee1e3f370ad3e/assets/slp-deployment.yaml | kubectl apply -f 
