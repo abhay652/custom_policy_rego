@@ -24,6 +24,10 @@ curl -H 'Authorization: Bearer rHf304Q-VAkMsIzZyzf3bgepNczSL1Y9UN9W_WMW5PsEiofnN
 
 curl -H 'Authorization: Bearer rHf304Q-VAkMsIzZyzf3bgepNczSL1Y9UN9W_WMW5PsEiofnNA5xGdMH3-0Z44zU9A68KR_nq-jlGQsjXtRzNW9LS8ofW8E7t0KLdQ' https://lznyt9.svc.styra.com/v1/systems/f8def75058ea4c1d9317bdc3d778d8e2/assets/slp-deployment.yaml | kubectl apply -n kong -f -
 
+# 5. Download Helm values.yaml file with OPA sidecar
+
+curl -H 'Authorization: Bearer rHf304Q-VAkMsIzZyzf3bgepNczSL1Y9UN9W_WMW5PsEiofnNA5xGdMH3-0Z44zU9A68KR_nq-jlGQsjXtRzNW9LS8ofW8E7t0KLdQ' https://lznyt9.svc.styra.com/v1/systems/f8def75058ea4c1d9317bdc3d778d8e2/assets/opa-sidecar-values.yaml > opa-sidecar-values.yaml
+
 # Copy command
 
 helm upgrade kong-quickstart kong/kong -n kong -f opa-sidecar-values.yaml
