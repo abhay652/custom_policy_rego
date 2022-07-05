@@ -9,6 +9,7 @@ $ helm install kong/kong --generate-name --set ingressController.installCRDs=fal
 
 export PROXY_IP=$(kubectl get -o jsonpath="{.status.loadBalancer.ingress[0].ip}" service -n kong demo-kong-proxy)
 
+helm repo add kong https://charts.konghq.com && helm repo update && helm install kong-quickstart kong/kong -n kong --create-namespace
 
 # 1. Install Custom Kong plugin for OPA
 
