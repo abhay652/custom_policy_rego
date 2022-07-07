@@ -2,3 +2,14 @@ https://docs.solo.io/gloo-edge/latest/installation/gateway/kubernetes/#install-g
 
 curl -sL https://run.solo.io/gloo/install | sh
 export PATH=$HOME/.gloo/bin:$PATH
+
+
+# 1. Install OPA deployment
+
+curl -H 'Authorization: Bearer VpnllA_43lu-a0xM-9gMhtmQKlobRCcDCsPJ_V55ertRu557nyM1wpUoB7gpFdQC77rWI7qKf0CIxD57gxkK6lP9TokM0wU7u4vL8A' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/opa-deployment.yaml | kubectl apply -f -
+# 2. Install Styra Local Plane (SLP)
+
+curl -H 'Authorization: Bearer VpnllA_43lu-a0xM-9gMhtmQKlobRCcDCsPJ_V55ertRu557nyM1wpUoB7gpFdQC77rWI7qKf0CIxD57gxkK6lP9TokM0wU7u4vL8A' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/slp-deployment.yaml | kubectl apply -f -
+# 3. Patch Ext auth config
+
+curl -H 'Authorization: Bearer VpnllA_43lu-a0xM-9gMhtmQKlobRCcDCsPJ_V55ertRu557nyM1wpUoB7gpFdQC77rWI7qKf0CIxD57gxkK6lP9TokM0wU7u4vL8A' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/gloo-settings-patch.yaml -o gloo-settings-patch.yaml && kubectl patch settings default --patch-file gloo-settings-patch.yaml --type merge -n gloo-system
