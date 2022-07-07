@@ -13,3 +13,7 @@ curl -H 'Authorization: Bearer VpnllA_43lu-a0xM-9gMhtmQKlobRCcDCsPJ_V55ertRu557n
 # 3. Patch Ext auth config
 
 curl -H 'Authorization: Bearer VpnllA_43lu-a0xM-9gMhtmQKlobRCcDCsPJ_V55ertRu557nyM1wpUoB7gpFdQC77rWI7qKf0CIxD57gxkK6lP9TokM0wU7u4vL8A' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/gloo-settings-patch.yaml -o gloo-settings-patch.yaml && kubectl patch settings default --patch-file gloo-settings-patch.yaml --type merge -n gloo-system
+
+# Copy command
+
+curl -H 'Authorization: Bearer WseN6xL36vAAraCnrZdv-B1dA1maKW7V22iMsNWT-gBz_s5wTu1ZSKdVcqD2Pf2wjloHtmnpm2VuSrNd' https://lznyt9.svc.styra.com/v1/system-types/template.gloo-edge:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
