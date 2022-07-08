@@ -14,3 +14,14 @@ kubectl -n emissary wait --for condition=available --timeout=90s deploy -lapp.ku
 https://www.getambassador.io/docs/emissary/latest/tutorials/getting-started/
 
 https://www.getambassador.io/docs/emissary/latest/topics/install/helm/
+
+
+# 1. Configure OPA AuthService
+
+curl -H 'Authorization: Bearer jse56nqReizsuJUquKtBc_iX2tTdk5NxUIr7kYHFSvsCMsfYp4JNa0P3i_wMku-F--QBYC5LaTT669Yr3IJWustll5zjPubd_GRi6g' https://lznyt9.svc.styra.com/v1/systems/ca151f8d769c45ca978af4d0d2c59d6b/assets/opa-authservice-config.yaml | kubectl apply -f -
+# 2. Install Styra Local Plane (SLP)
+
+curl -H 'Authorization: Bearer jse56nqReizsuJUquKtBc_iX2tTdk5NxUIr7kYHFSvsCMsfYp4JNa0P3i_wMku-F--QBYC5LaTT669Yr3IJWustll5zjPubd_GRi6g' https://lznyt9.svc.styra.com/v1/systems/ca151f8d769c45ca978af4d0d2c59d6b/assets/slp-deployment.yaml | kubectl apply -f -
+# 3. Patch OPA sidecar to Emissary Ingress deployment
+
+curl -H 'Authorization: Bearer jse56nqReizsuJUquKtBc_iX2tTdk5NxUIr7kYHFSvsCMsfYp4JNa0P3i_wMku-F--QBYC5LaTT669Yr3IJWustll5zjPubd_GRi6g' https://lznyt9.svc.styra.com/v1/systems/ca151f8d769c45ca978af4d0d2c59d6b/assets/opa-sidecar-patch.yaml > opa-sidecar-patch.yaml && kubectl patch deployment emissary-ingress -n emissary --patch-file opa-sidecar-patch.yaml
