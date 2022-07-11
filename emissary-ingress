@@ -18,10 +18,10 @@ https://www.getambassador.io/docs/emissary/latest/topics/install/helm/
 
 # 1. Configure OPA AuthService
 
-curl -H 'Authorization: Bearer 3-4pn5LTK3UpUgD-TjSxMDINP4KdGPuUVWQbBAkTwrVNUjKBpuec0SGp0A6KMuuXHV_6Oilj-ZaoQOuTyeQJrwkH0GnpTrrLPi60cA' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-authservice-config.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer UnEA2aSEvWycr9RfCrO6a_4ejkGO_j7BdmvjDM34oAg90vSJ837Rxc6o7UUafESylYsX4NT_DC80-DdOPtpY6OAhCacxcyuaSAsEbg' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-authservice-config.yaml | kubectl apply -f -
 # 2. Install Styra Local Plane (SLP)
 
-curl -H 'Authorization: Bearer 3-4pn5LTK3UpUgD-TjSxMDINP4KdGPuUVWQbBAkTwrVNUjKBpuec0SGp0A6KMuuXHV_6Oilj-ZaoQOuTyeQJrwkH0GnpTrrLPi60cA' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/slp-deployment.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer UnEA2aSEvWycr9RfCrO6a_4ejkGO_j7BdmvjDM34oAg90vSJ837Rxc6o7UUafESylYsX4NT_DC80-DdOPtpY6OAhCacxcyuaSAsEbg' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/slp-deployment.yaml | kubectl apply -f -
 # 3. Patch OPA sidecar to Emissary Ingress deployment
 
-curl -H 'Authorization: Bearer 3-4pn5LTK3UpUgD-TjSxMDINP4KdGPuUVWQbBAkTwrVNUjKBpuec0SGp0A6KMuuXHV_6Oilj-ZaoQOuTyeQJrwkH0GnpTrrLPi60cA' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-sidecar-patch.yaml > opa-sidecar-patch.yaml && kubectl patch deployment emissary-ingress -n emissary --patch-file opa-sidecar-patch.yaml
+curl -H 'Authorization: Bearer UnEA2aSEvWycr9RfCrO6a_4ejkGO_j7BdmvjDM34oAg90vSJ837Rxc6o7UUafESylYsX4NT_DC80-DdOPtpY6OAhCacxcyuaSAsEbg' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-sidecar-patch.yaml > opa-sidecar-patch.yaml && kubectl patch deployment emissary-ingress -n emissary --patch-file opa-sidecar-patch.yaml
