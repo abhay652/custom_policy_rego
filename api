@@ -1,0 +1,1 @@
+mkdir ./eks-cluster && cd ./eks-cluster && curl -H 'Authorization: Bearer Jk7KVkovO-iQxafFlxCN2rNIevYo_IAEqGsrw26oSRcVsserIEx_fnrHz2LIUXq1PUApr8HrT35YbJZ0MWWwuSqW' https://fg3u6i.svc.styra.com/v1/system-types/template.aws-api-gateway:1.0/assets/quickstart/eks-cluster.tf -o eks-cluster.tf && terraform init && terraform apply
