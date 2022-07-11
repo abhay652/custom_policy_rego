@@ -2,3 +2,19 @@ mkdir ./eks-cluster && cd ./eks-cluster && curl -H 'Authorization: Bearer Jk7KVk
 
 
 aws eks update-kubeconfig --region region-code --name cluster-name
+
+# Download terraform script and deploy OPA Pod
+
+mkdir ./resources && cd ./resources && curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/opa-pod.tf -o opa-pod.tf && terraform init && terraform apply -auto-approve
+# Download the terraform script and deploy SLP pod
+
+curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/slp-pod.tf -o slp-pod.tf && terraform apply -auto-approve 
+# Download the .zip file for creating lambda function
+
+curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/eks-lambda-authorizer.zip -o eks-lambda-authorizer.zip
+# Download and run the terraform script for creating the lambda function
+
+curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/lambda-function.tf -o lambda-function.tf && terraform init && terraform apply -auto-approve
+# Download and run the terraform script for creating Amazon API Gateway
+
+curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/aws-gateway.tf -o aws-gateway.tf && terraform apply -auto-approve
