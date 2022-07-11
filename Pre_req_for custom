@@ -33,3 +33,12 @@ curl 'localhost:8181/health?bundle=true'
 # Update Styra datasource
 
 curl -X PUT -H 'Content-Type: application/json' -H 'Authorization: Bearer uquFpFASoI6dJZjm0hOBrsuzbnklc2HNEaC3rJFe2nmlojEWUN1f28bnkEn6Bez_trZJQwZbJse7gmE9dwt_2ADr8G2lPYoacPs' 'https://x8gy40.svc.styra.com/v1/data/systems/cde1cabc970a443e92aa426798b2190b/dataset' -d '{"key": "value"}'
+
+
+
+
+users
+ssh -p 2222 ops@localhost -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+ssh -p 2222 dave@localhost -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+ssh -p 2222 alice@localhost   -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
+ssh -p 2222 bob@localhost -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null
