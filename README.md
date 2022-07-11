@@ -1,5 +1,6 @@
 https://github.com/kunchalavikram1427/YouTube_Series/blob/main/Kubernetes/ClusterSetup/minikube-on-aws.md
 
+https://www.linuxtechi.com/how-to-install-minikube-on-ubuntu/
 
 https://www.simplilearn.com/tutorials/docker-tutorial/how-to-install-docker-on-ubuntu
 
