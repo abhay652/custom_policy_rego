@@ -7,7 +7,7 @@ docker run -i -p 8080:8080 -p 8123:8123 -e SAMPLE_APP=entz-playground -e DOCS_PO
 # Open the playground in your browser at http://localhost:8123.
 # Visit https://github.com/StyraInc/entitlements-samples for details and other sample applications.
 
-
+curl -H 'Authorization: Bearer 9Q5F0t-cRFUeYV9aewz5_7GpgKPS7N1q3E6hJ9Fwf9Kkzjv7H4AT4P2eL64zBBsaNZ0iEna6v4BMmPGq7nx4E0uK9d2pRcy1G0Bm9g' -o opa-conf.yaml https://x8gy40.svc.styra.com/v1/systems/bcd2ce4a5cbd4abdbb1d3fb8df623a83/assets/opaconfig.yaml
 
 # Download Docker image
 
