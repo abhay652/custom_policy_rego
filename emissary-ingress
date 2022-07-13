@@ -25,3 +25,8 @@ curl -H 'Authorization: Bearer UnEA2aSEvWycr9RfCrO6a_4ejkGO_j7BdmvjDM34oAg90vSJ8
 # 3. Patch OPA sidecar to Emissary Ingress deployment
 
 curl -H 'Authorization: Bearer UnEA2aSEvWycr9RfCrO6a_4ejkGO_j7BdmvjDM34oAg90vSJ837Rxc6o7UUafESylYsX4NT_DC80-DdOPtpY6OAhCacxcyuaSAsEbg' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-sidecar-patch.yaml > opa-sidecar-patch.yaml && kubectl patch deployment emissary-ingress -n emissary --patch-file opa-sidecar-patch.yaml
+
+
+curl -H 'Authorization: Bearer NzqhQYrFJk6K7JTQY3kQEbvPE3TtJLAq8Dk6qQKNpD5YKIVV8pGXzYhqbG-rOO4oVw9xCh5PeAV9dNYQqBtDTGEmbA' https://lznyt9.svc.styra.com/v1/system-types/template.emissary-ingress:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
+
+kubectl logs $(kubectl get pods -l app=client-load -o jsonpath='{.items..metadata.name}')
