@@ -27,3 +27,39 @@ kubectl get pods -n gloo-system
 curl -H 'Authorization: Bearer WseN6xL36vAAraCnrZdv-B1dA1maKW7V22iMsNWT-gBz_s5wTu1ZSKdVcqD2Pf2wjloHtmnpm2VuSrNd' https://lznyt9.svc.styra.com/v1/system-types/template.gloo-edge:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
 
 kubectl get pods
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+# OLD POLICY
+
+package policy.ingress
+
+default allow = false
+
+# allow /finance/salary/{user} ingress
+allow {
+  some username
+  input.attributes.request.http.method == "GET"
+  input.parsed_path = ["finance", "salary", username]
+}
+
+allow {
+  input.attributes.request.http.method == "GET"
+  input.parsed_path = ["hr", "dashboard"]
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+#NEW POLICY
+
+package policy.ingress
+
+default allow = false
+
+# allow /finance/salary/{user} ingress
+allow {
+  some username
+  input.attributes.request.http.method == "GET"
+  input.parsed_path = ["finance", "salary", username]
+}
