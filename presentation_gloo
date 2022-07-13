@@ -1,0 +1,29 @@
+Install Minikube: 
+https://minikube.sigs.k8s.io/docs/start/
+
+Install Gloo edge's `glooctl`: 
+https://docs.solo.io/gloo-edge/latest/installation/gateway/kubernetes/#install-glooctl
+
+Install Gloo Edge Gateway: 
+https://docs.solo.io/gloo-edge/latest/installation/gateway/kubernetes/#installing-on-kubernetes-with-glooctl
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# 1. Install OPA deployment
+
+curl -H 'Authorization: Bearer _hCot4_LkT3GpV4FjE2SfCNxLyaEFZ9sEdmsMEFcTfVIliPtKTaDPOrzlS1pOe3HJWDQ_IZUPeCqB6l3wF6XftoWyBrKvj4BdQTwPQ' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/opa-deployment.yaml | kubectl apply -f -
+# 2. Install Styra Local Plane (SLP)
+
+curl -H 'Authorization: Bearer _hCot4_LkT3GpV4FjE2SfCNxLyaEFZ9sEdmsMEFcTfVIliPtKTaDPOrzlS1pOe3HJWDQ_IZUPeCqB6l3wF6XftoWyBrKvj4BdQTwPQ' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/slp-deployment.yaml | kubectl apply -f -
+# 3. Patch Ext auth config
+
+curl -H 'Authorization: Bearer _hCot4_LkT3GpV4FjE2SfCNxLyaEFZ9sEdmsMEFcTfVIliPtKTaDPOrzlS1pOe3HJWDQ_IZUPeCqB6l3wF6XftoWyBrKvj4BdQTwPQ' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/gloo-settings-patch.yaml -o gloo-settings-patch.yaml && kubectl patch settings default --patch-file gloo-settings-patch.yaml --type merge -n gloo-system
+
+kubectl get pods -n gloo-system
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+# Copy command
+
+curl -H 'Authorization: Bearer WseN6xL36vAAraCnrZdv-B1dA1maKW7V22iMsNWT-gBz_s5wTu1ZSKdVcqD2Pf2wjloHtmnpm2VuSrNd' https://lznyt9.svc.styra.com/v1/system-types/template.gloo-edge:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
+
+kubectl get pods
