@@ -28,5 +28,4 @@ curl -H 'Authorization: Bearer g1j8E_zXKoYAbwOx-8bU5BnSA5KTH3UwrOTZbxX8e0stwvjH5
 
 
 curl -H 'Authorization: Bearer NzqhQYrFJk6K7JTQY3kQEbvPE3TtJLAq8Dk6qQKNpD5YKIVV8pGXzYhqbG-rOO4oVw9xCh5PeAV9dNYQqBtDTGEmbA' https://lznyt9.svc.styra.com/v1/system-types/template.emissary-ingress:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
-
 kubectl logs $(kubectl get pods -l app=client-load -o jsonpath='{.items..metadata.name}')
