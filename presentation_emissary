@@ -1,9 +1,9 @@
 # 1. Configure OPA AuthService
 
-curl -H 'Authorization: Bearer Hzy3BWn1p_MmxdKCpfVhuZOGKkxVlWtwlbDwZNwJmMC13-Qxur8ot4BRXOT0uh1tM6thGlqydxWx8gbwIV7pnlgfDD5ga73slS2ebA' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-authservice-config.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer IdUPcHJiNR2Ukt70fvidfVDzT9PUzdtxLOk0X0d--oLwT8PMdzLD6xNVboQVgyjcBcwdvgSbcP46PhwHwbQAONYrCyeZGbjzmWdv3A' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-authservice-config.yaml | kubectl apply -f -
 # 2. Install Styra Local Plane (SLP)
 
-curl -H 'Authorization: Bearer Hzy3BWn1p_MmxdKCpfVhuZOGKkxVlWtwlbDwZNwJmMC13-Qxur8ot4BRXOT0uh1tM6thGlqydxWx8gbwIV7pnlgfDD5ga73slS2ebA' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/slp-deployment.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer IdUPcHJiNR2Ukt70fvidfVDzT9PUzdtxLOk0X0d--oLwT8PMdzLD6xNVboQVgyjcBcwdvgSbcP46PhwHwbQAONYrCyeZGbjzmWdv3A' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/slp-deployment.yaml | kubectl apply -f -
 # 3. Patch OPA sidecar to Emissary Ingress deployment
 
-curl -H 'Authorization: Bearer Hzy3BWn1p_MmxdKCpfVhuZOGKkxVlWtwlbDwZNwJmMC13-Qxur8ot4BRXOT0uh1tM6thGlqydxWx8gbwIV7pnlgfDD5ga73slS2ebA' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-sidecar-patch.yaml > opa-sidecar-patch.yaml && kubectl patch deployment emissary-ingress -n emissary --patch-file opa-sidecar-patch.yaml
+curl -H 'Authorization: Bearer IdUPcHJiNR2Ukt70fvidfVDzT9PUzdtxLOk0X0d--oLwT8PMdzLD6xNVboQVgyjcBcwdvgSbcP46PhwHwbQAONYrCyeZGbjzmWdv3A' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-sidecar-patch.yaml > opa-sidecar-patch.yaml && kubectl patch deployment emissary-ingress -n emissary --patch-file opa-sidecar-patch.yaml
