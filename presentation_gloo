@@ -24,7 +24,7 @@ curl -H 'Authorization: Bearer 4EP2IinRYPROmPa3xBMJZtgI_hVB0REV_5nhJ1M5OGFi1JlhT
 
 # Copy command
 
-curl -H 'Authorization: Bearer NzqhQYrFJk6K7JTQY3kQEbvPE3TtJLAq8Dk6qQKNpD5YKIVV8pGXzYhqbG-rOO4oVw9xCh5PeAV9dNYQqBtDTGEmbA' https://lznyt9.svc.styra.com/v1/system-types/template.emissary-ingress:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer WseN6xL36vAAraCnrZdv-B1dA1maKW7V22iMsNWT-gBz_s5wTu1ZSKdVcqD2Pf2wjloHtmnpm2VuSrNd' https://lznyt9.svc.styra.com/v1/system-types/template.gloo-edge:1.0/assets/quickstart/sample-app.yaml | kubectl apply -f -
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 # OLD POLICY
