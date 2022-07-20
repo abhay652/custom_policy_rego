@@ -10,14 +10,13 @@ https://docs.solo.io/gloo-edge/latest/installation/gateway/kubernetes/#installin
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. Install OPA deployment
 
-curl -H 'Authorization: Bearer 4EP2IinRYPROmPa3xBMJZtgI_hVB0REV_5nhJ1M5OGFi1JlhTqQZnFaoLSytAQwMUs6nURoVMTyw_Sf7-c0mV7VoTSbkGDfgOiN8Hg' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/opa-deployment.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer 9wBmguGjrTes-aXJHru_e7T2WUVIBwJ4EQKl83G2J7Qjf618b0TArGO_o9kEAZaWrS8DOAmdebUaSv7D4OyYrGm7mLCzrFHMRvn7Eg' https://lznyt9.svc.styra.com/v1/systems/d84cae7aa74f4d6fbdf595e27363f1f2/assets/opa-deployment.yaml | kubectl apply -f -
 # 2. Install Styra Local Plane (SLP)
 
-curl -H 'Authorization: Bearer 4EP2IinRYPROmPa3xBMJZtgI_hVB0REV_5nhJ1M5OGFi1JlhTqQZnFaoLSytAQwMUs6nURoVMTyw_Sf7-c0mV7VoTSbkGDfgOiN8Hg' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/slp-deployment.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer 9wBmguGjrTes-aXJHru_e7T2WUVIBwJ4EQKl83G2J7Qjf618b0TArGO_o9kEAZaWrS8DOAmdebUaSv7D4OyYrGm7mLCzrFHMRvn7Eg' https://lznyt9.svc.styra.com/v1/systems/d84cae7aa74f4d6fbdf595e27363f1f2/assets/slp-deployment.yaml | kubectl apply -f -
 # 3. Patch Ext auth config
 
-curl -H 'Authorization: Bearer 4EP2IinRYPROmPa3xBMJZtgI_hVB0REV_5nhJ1M5OGFi1JlhTqQZnFaoLSytAQwMUs6nURoVMTyw_Sf7-c0mV7VoTSbkGDfgOiN8Hg' https://lznyt9.svc.styra.com/v1/systems/fbfd31874eee4c14b5bbbb4021c3c835/assets/gloo-settings-patch.yaml -o gloo-settings-patch.yaml && kubectl patch settings default --patch-file gloo-settings-patch.yaml --type merge -n gloo-system
-
+curl -H 'Authorization: Bearer 9wBmguGjrTes-aXJHru_e7T2WUVIBwJ4EQKl83G2J7Qjf618b0TArGO_o9kEAZaWrS8DOAmdebUaSv7D4OyYrGm7mLCzrFHMRvn7Eg' https://lznyt9.svc.styra.com/v1/systems/d84cae7aa74f4d6fbdf595e27363f1f2/assets/gloo-settings-patch.yaml -o gloo-settings-patch.yaml && kubectl patch settings default --patch-file gloo-settings-patch.yaml --type merge -n gloo-system
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 # Copy command
