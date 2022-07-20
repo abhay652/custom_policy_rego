@@ -7,3 +7,5 @@ kubectl annotate namespace default kuma.io/sidecar-injection=enabled
 # Install Styra Local Plane (SLP)
 
 curl -H 'Authorization: Bearer 0B_BlX8D2M6N29NS8dQXtrzKisP3OW7kWBr7fCTk2q5ilcGorxejG0LXp-xaDyDVmmVazYEzMoXPHk0enjbrZ00RsKQo9KsKx8pKPQ' https://x8gy40.svc.styra.com/v1/systems/e0f5f5961e5d42c0b2e792527b58ef53/assets/slp-deployment.yaml | kubectl apply -f -
+
+curl -H 'Authorization: Bearer 7ZFZlaY3TiqIErpMXasCJlTpTWBw5AkEe5ELnc-DOsrugcBoWgN9LiwEOQX08A-JnX20QXum0w' https://x8gy40.svc.styra.com/v1/system-types/template.kuma:1.0/assets/quickstart/example-app.yaml | kubectl apply -f -
