@@ -1,3 +1,6 @@
+https://www.getambassador.io/docs/emissary/latest/tutorials/getting-started/
+
+
 # 1. Configure OPA AuthService
 
 curl -H 'Authorization: Bearer bvsJ6NMrBke-M9U6r8urUWDHblDzM57JQ5rBig7RALSy4_3B5wKWsX7lowj_jvnr3F6PSyCYUkyG3XObWbEUuRn9Ixicpkjihnkt6w' https://lznyt9.svc.styra.com/v1/systems/f06c573881d541f9be087c98b70ec0d2/assets/opa-authservice-config.yaml | kubectl apply -f -
