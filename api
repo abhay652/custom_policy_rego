@@ -1,20 +1,54 @@
-mkdir ./eks-cluster && cd ./eks-cluster && curl -H 'Authorization: Bearer Jk7KVkovO-iQxafFlxCN2rNIevYo_IAEqGsrw26oSRcVsserIEx_fnrHz2LIUXq1PUApr8HrT35YbJZ0MWWwuSqW' https://fg3u6i.svc.styra.com/v1/system-types/template.aws-api-gateway:1.0/assets/quickstart/eks-cluster.tf -o eks-cluster.tf && terraform init && terraform apply
+The Terraform CLI,
+-------------------
+wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+sudo apt update && sudo apt install terraform
+***********************************************************************************************************************************************************************
 
+Git, 
+----
+sudo apt-get update
+sudo apt-get install git-all
+git version
+***********************************************************************************************************************************************************************
 
-aws eks update-kubeconfig --region region-code --name cluster-name
+The kubectl client,
+-------------------
+1. curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+2. optional [
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl.sha256"
+echo "$(cat kubectl.sha256)  kubectl" | sha256sum --check
 
-# Download terraform script and deploy OPA Pod
+If valid, the output is:
+kubectl: OK
 
-mkdir ./resources && cd ./resources && curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/opa-pod.tf -o opa-pod.tf && terraform init && terraform apply -auto-approve
-# Download the terraform script and deploy SLP pod
+If the check fails, sha256 exits with nonzero status and prints output similar to:
+kubectl: FAILED
+sha256sum: WARNING: 1 computed checksum did NOT match
+(Download the same version of the binary and checksum.)
+]
+3. sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
+4. kubectl version --client
+***********************************************************************************************************************************************************************
 
-curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/slp-pod.tf -o slp-pod.tf && terraform apply -auto-approve 
-# Download the .zip file for creating lambda function
+The aws-iam-authenticator,
+--------------------------
+1. curl -o aws-iam-authenticator https://s3.us-west-2.amazonaws.com/amazon-eks/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator
+2. Optional [
+curl -o aws-iam-authenticator.sha256 https://s3.us-west-2.amazonaws.com/amazon-eks/1.21.2/2021-07-05/bin/linux/amd64/aws-iam-authenticator.sha256
+openssl sha1 -sha256 aws-iam-authenticator
+Compare the generated SHA-256 sum in the command output against your downloaded aws-iam-authenticator.sha256 file. The two should match.
+]
+3. chmod +x ./aws-iam-authenticator
+4. mkdir -p $HOME/bin && cp ./aws-iam-authenticator $HOME/bin/aws-iam-authenticator && export PATH=$PATH:$HOME/bin
+5. echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+6. aws-iam-authenticator help
+**********************************************************************************************************************************************************************
 
-curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/eks-lambda-authorizer.zip -o eks-lambda-authorizer.zip
-# Download and run the terraform script for creating the lambda function
-
-curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/lambda-function.tf -o lambda-function.tf && terraform init && terraform apply -auto-approve
-# Download and run the terraform script for creating Amazon API Gateway
-
-curl -H 'Authorization: Bearer gVYisXY9QyCI952W5HNkBHG2I5hDsmBrJKvcJ-bRJfmudJ75BCm_O1hKGW8xtm1ZtvgzRa8EI5X2cMtVVYDt7_Yyk7R8tPPWemracA' https://fg3u6i.svc.styra.com/v1/systems/aa7df112122942f9b394108b16bfebe9/assets/terraform/aws-gateway.tf -o aws-gateway.tf && terraform apply -auto-approve
+The awscli.
+----------
+1. curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+2. unzip awscliv2.zip
+3. sudo ./aws/install
+4. aws --version
+***********************************************************************************************************************************************************************
