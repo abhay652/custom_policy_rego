@@ -57,3 +57,9 @@ The awscli.
 STEPS TO CREATE NEW CLUSTER
 
 mkdir ./eks-cluster && cd ./eks-cluster && curl -H 'Authorization: Bearer 2E6vc9xbybOgbWYocvfT7G_xRRaUAvEY2dcFWUfwjiDSsTY676iZOMssYemxcK073GBJM-dTy2KLkxcsx0mArFcK' https://x8gy40.svc.styra.com/v1/system-types/template.aws-api-gateway:1.0/assets/quickstart/eks-cluster.tf -o eks-cluster.tf && terraform init && terraform apply
+
+
+
+terraform output kubectl_config
+
+aws eks update-kubeconfig --region region-code --name cluster-name
