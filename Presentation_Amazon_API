@@ -1,3 +1,37 @@
+For Amazon EKS 
+
+We must install and configure the following tools and resources that you need to create and manage an Amazon EKS cluster.
+
+1. kubectl – A command line tool for working with Kubernetes clusters.
+2. eksctl – A command line tool for working with EKS clusters that automates many individual tasks.
+3. Required IAM permissions – The IAM security principal that you're using must have permissions to work with Amazon EKS IAM roles and service linked roles, AWS CloudFormation, and a VPC and related resources.
+4. AWS CLI – A command line tool for working with AWS services, including Amazon EKS. 
+
+
+Installing or updating kubectl
+
+// kubectl version | grep Client | cut -d : -f 5  (To determine whetheryou already have kubectl installed or not)
+1. curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
+2. chmod +x ./kubectl
+3. mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
+4. echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
+5. kubectl version --short --client
+
+Installing or updating eksctl
+
+// eksctl version   (To determine whetheryou already have eksctl installed or not)
+1. curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+2. sudo mv /tmp/eksctl /usr/local/bin
+3. eksctl version
+
+
+Installing or updating the latest version of the AWS CLI
+
+1. curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+2. unzip awscliv2.zip 
+3. sudo ./aws/install
+4. aws --version
+
 The Terraform CLI,
 -------------------
 wget -O- https://apt.releases.hashicorp.com/gpg | gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
