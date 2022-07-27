@@ -1,5 +1,5 @@
 For Amazon EKS 
-
+++++++++++++++++
 We must install and configure the following tools and resources that you need to create and manage an Amazon EKS cluster.
 
 1. kubectl – A command line tool for working with Kubernetes clusters.
@@ -9,28 +9,31 @@ We must install and configure the following tools and resources that you need to
 
 
 Installing or updating kubectl
-
+------------------------------
 // kubectl version | grep Client | cut -d : -f 5  (To determine whetheryou already have kubectl installed or not)
 1. curl -o kubectl https://s3.us-west-2.amazonaws.com/amazon-eks/1.22.6/2022-03-09/bin/linux/amd64/kubectl
 2. chmod +x ./kubectl
 3. mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$PATH:$HOME/bin
 4. echo 'export PATH=$PATH:$HOME/bin' >> ~/.bashrc
 5. kubectl version --short --client
+***********************************************************************************************************************************************************************
 
 Installing or updating eksctl
-
+-----------------------------
 // eksctl version   (To determine whetheryou already have eksctl installed or not)
 1. curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 2. sudo mv /tmp/eksctl /usr/local/bin
 3. eksctl version
-
+***********************************************************************************************************************************************************************
 
 Installing or updating the latest version of the AWS CLI
-
+---------------------------------------------------------
 1. curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
 2. unzip awscliv2.zip 
 3. sudo ./aws/install
 4. aws --version
+***********************************************************************************************************************************************************************
+***********************************************************************************************************************************************************************
 
 The Terraform CLI,
 -------------------
@@ -86,14 +89,74 @@ The awscli.
 3. sudo ./aws/install
 4. aws --version
 ***********************************************************************************************************************************************************************
-
+**********************************************************************************************************************************************************************************************************************************************************************************************************************************************
+ 
+ Infrastructure creation
++++++++++++++++++++++++++
 
 STEPS TO CREATE NEW CLUSTER
-
+---------------------------
 mkdir ./eks-cluster && cd ./eks-cluster && curl -H 'Authorization: Bearer 2E6vc9xbybOgbWYocvfT7G_xRRaUAvEY2dcFWUfwjiDSsTY676iZOMssYemxcK073GBJM-dTy2KLkxcsx0mArFcK' https://x8gy40.svc.styra.com/v1/system-types/template.aws-api-gateway:1.0/assets/quickstart/eks-cluster.tf -o eks-cluster.tf && terraform init && terraform apply
-
-
 
 terraform output kubectl_config
 
+// If you're running the AWS CLI version 1.16.156 or later, use the below command to connect to your cluster
 aws eks update-kubeconfig --region region-code --name cluster-name
+
+***********************************************************************************************************************************************************************
+***********************************************************************************************************************************************************************
+
+Amazon API Gateway system configuration
+++++++++++++++++++++++++++++++++++++++++
+
+1. Download terraform script and deploy OPA Pod
+------------------------------------------------
+mkdir ./resources && cd ./resources && curl -H 'Authorization: Bearer SHbYf_-WjqbocCjKub8ggFUfd1DoaQRlZDmof29MbHNaQOSQ5rFLfge4Sek-JKrq7zzTo1vdUXjxkYYGnFe-wzSCGsDB3REPUHv3SQ' https://x8gy40.svc.styra.com/v1/systems/ccace73cb5aa47d5883617f6984918a2/assets/terraform/opa-pod.tf -o opa-pod.tf && terraform init && terraform apply -auto-approve
+
+2. Download the terraform script and deploy SLP pod
+----------------------------------------------------
+curl -H 'Authorization: Bearer SHbYf_-WjqbocCjKub8ggFUfd1DoaQRlZDmof29MbHNaQOSQ5rFLfge4Sek-JKrq7zzTo1vdUXjxkYYGnFe-wzSCGsDB3REPUHv3SQ' https://x8gy40.svc.styra.com/v1/systems/ccace73cb5aa47d5883617f6984918a2/assets/terraform/slp-pod.tf -o slp-pod.tf && terraform apply -auto-approve 
+
+#3. Download the .zip file for creating lambda function
+--------------------------------------------------------
+curl -H 'Authorization: Bearer SHbYf_-WjqbocCjKub8ggFUfd1DoaQRlZDmof29MbHNaQOSQ5rFLfge4Sek-JKrq7zzTo1vdUXjxkYYGnFe-wzSCGsDB3REPUHv3SQ' https://x8gy40.svc.styra.com/v1/systems/ccace73cb5aa47d5883617f6984918a2/assets/terraform/eks-lambda-authorizer.zip -o eks-lambda-authorizer.zip
+
+4. Download and run the terraform script for creating the lambda function
+--------------------------------------------------------------------------
+curl -H 'Authorization: Bearer SHbYf_-WjqbocCjKub8ggFUfd1DoaQRlZDmof29MbHNaQOSQ5rFLfge4Sek-JKrq7zzTo1vdUXjxkYYGnFe-wzSCGsDB3REPUHv3SQ' https://x8gy40.svc.styra.com/v1/systems/ccace73cb5aa47d5883617f6984918a2/assets/terraform/lambda-function.tf -o lambda-function.tf && terraform init && terraform apply -auto-approve
+
+5. Download and run the terraform script for creating Amazon API Gateway
+-------------------------------------------------------------------------
+curl -H 'Authorization: Bearer SHbYf_-WjqbocCjKub8ggFUfd1DoaQRlZDmof29MbHNaQOSQ5rFLfge4Sek-JKrq7zzTo1vdUXjxkYYGnFe-wzSCGsDB3REPUHv3SQ' https://x8gy40.svc.styra.com/v1/systems/ccace73cb5aa47d5883617f6984918a2/assets/terraform/aws-gateway.tf -o aws-gateway.tf && terraform apply -auto-approve
+
+VERIFY ALL PODS
+---------------
+kubectl get pods
+***********************************************************************************************************************************************************************
+
+Sample application deployment
+++++++++++++++++++++++++++++++
+
+To download and deploy a sample app
+-----------------------------------
+curl -H 'Authorization: Bearer 2E6vc9xbybOgbWYocvfT7G_xRRaUAvEY2dcFWUfwjiDSsTY676iZOMssYemxcK073GBJM-dTy2KLkxcsx0mArFcK' https://x8gy40.svc.styra.com/v1/system-types/template.aws-api-gateway:1.0/assets/quickstart/sample-app.tf -o sample-app.tf && terraform apply -auto-approve
+
+VERIFY ALL PODS
+---------------
+kubectl get pods
+
+Create the gateway integration and stage.
+------------------------------------------
+curl -H 'Authorization: Bearer 2E6vc9xbybOgbWYocvfT7G_xRRaUAvEY2dcFWUfwjiDSsTY676iZOMssYemxcK073GBJM-dTy2KLkxcsx0mArFcK' https://x8gy40.svc.styra.com/v1/system-types/template.aws-api-gateway:1.0/assets/quickstart/gateway-integration.tf -o gateway-integration.tf && terraform apply -auto-approve
+***********************************************************************************************************************************************************************
+
+Decision auditing 
+++++++++++++++++++
+Run the following shell script to generate pre-configured HTTP GET requests to test the behaviour of the deployed policy.
+-------------------------------------------------------------------------------------------------------------------------
+bash <(curl -H 'Authorization: Bearer 2E6vc9xbybOgbWYocvfT7G_xRRaUAvEY2dcFWUfwjiDSsTY676iZOMssYemxcK073GBJM-dTy2KLkxcsx0mArFcK' https://x8gy40.svc.styra.com/v1/system-types/template.aws-api-gateway:1.0/assets/quickstart/load-gen.sh)
+
+
+
+
+
