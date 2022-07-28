@@ -27,6 +27,9 @@ curl -H 'Authorization: Bearer 9f7FG5Xw99z01VxYWGXNKR7u4XA8ysRGj2iwC0T9tZDguvmKV
 
 curl -H 'Authorization: Bearer 9f7FG5Xw99z01VxYWGXNKR7u4XA8ysRGj2iwC0T9tZDguvmKVeRjjiHW3b-MW_1ypCaD6nqQ_XN2rlTiEJc0tosENw2JOE896Dnjgw' https://lznyt9.svc.styra.com/v1/systems/bd2537bbc088484897aba887a585cfe4/assets/slp-deployment.yaml | kubectl apply -n kong -f -
 
+
+curl -H 'Authorization: Bearer 9f7FG5Xw99z01VxYWGXNKR7u4XA8ysRGj2iwC0T9tZDguvmKVeRjjiHW3b-MW_1ypCaD6nqQ_XN2rlTiEJc0tosENw2JOE896Dnjgw' https://lznyt9.svc.styra.com/v1/systems/bd2537bbc088484897aba887a585cfe4/assets/opa-sidecar-values.yaml > opa-sidecar-values.yaml
+
 helm upgrade kong-quickstart kong/kong -n kong -f opa-sidecar-values.yaml
 
 
