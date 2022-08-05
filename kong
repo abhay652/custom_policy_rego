@@ -18,16 +18,16 @@ helm repo add kong https://charts.konghq.com && helm repo update && helm install
 
 # 1. Install Custom Kong plugin for OPA
 
-curl -H 'Authorization: Bearer XOGYsOLoEXfATN1xfp4AvJNfOiUHHtTJcv46QQouWZrXcEcIVxHrVShNMQ2Xyie48CmmY6iMqrsEM-w7-nL9QyrV5mkoilTSlJgoyQ' https://lznyt9.svc.styra.com/v1/systems/bd2537bbc088484897aba887a585cfe4/assets/custom-kong-plugin.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer We1ZmE_-xWv6tKzRo19oDWzieMUARbfH4bEj7HH6P-o_4jO1scAos7r2IwayZf7JW7iLwtsEKsPH9_hJ8d9FIlPklExBQHqy6eCg5Q' https://lznyt9.svc.styra.com/v1/systems/f8def75058ea4c1d9317bdc3d778d8e2/assets/custom-kong-plugin.yaml | kubectl apply -f -
 # 2. Configure Kong plugin for OPA authorization
 
-curl -H 'Authorization: Bearer XOGYsOLoEXfATN1xfp4AvJNfOiUHHtTJcv46QQouWZrXcEcIVxHrVShNMQ2Xyie48CmmY6iMqrsEM-w7-nL9QyrV5mkoilTSlJgoyQ' https://lznyt9.svc.styra.com/v1/systems/bd2537bbc088484897aba887a585cfe4/assets/kong-plugin-config.yaml | kubectl apply -f -
+curl -H 'Authorization: Bearer We1ZmE_-xWv6tKzRo19oDWzieMUARbfH4bEj7HH6P-o_4jO1scAos7r2IwayZf7JW7iLwtsEKsPH9_hJ8d9FIlPklExBQHqy6eCg5Q' https://lznyt9.svc.styra.com/v1/systems/f8def75058ea4c1d9317bdc3d778d8e2/assets/kong-plugin-config.yaml | kubectl apply -f -
 # 3. Configure OPA
 
-curl -H 'Authorization: Bearer XOGYsOLoEXfATN1xfp4AvJNfOiUHHtTJcv46QQouWZrXcEcIVxHrVShNMQ2Xyie48CmmY6iMqrsEM-w7-nL9QyrV5mkoilTSlJgoyQ' https://lznyt9.svc.styra.com/v1/systems/bd2537bbc088484897aba887a585cfe4/assets/opa-config.yaml | kubectl apply -n kong -f -
+curl -H 'Authorization: Bearer We1ZmE_-xWv6tKzRo19oDWzieMUARbfH4bEj7HH6P-o_4jO1scAos7r2IwayZf7JW7iLwtsEKsPH9_hJ8d9FIlPklExBQHqy6eCg5Q' https://lznyt9.svc.styra.com/v1/systems/f8def75058ea4c1d9317bdc3d778d8e2/assets/opa-config.yaml | kubectl apply -n kong -f -
 # 4. Install Styra Local Plane (SLP)
 
-curl -H 'Authorization: Bearer XOGYsOLoEXfATN1xfp4AvJNfOiUHHtTJcv46QQouWZrXcEcIVxHrVShNMQ2Xyie48CmmY6iMqrsEM-w7-nL9QyrV5mkoilTSlJgoyQ' https://lznyt9.svc.styra.com/v1/systems/bd2537bbc088484897aba887a585cfe4/assets/slp-deployment.yaml | kubectl apply -n kong -f 
+curl -H 'Authorization: Bearer We1ZmE_-xWv6tKzRo19oDWzieMUARbfH4bEj7HH6P-o_4jO1scAos7r2IwayZf7JW7iLwtsEKsPH9_hJ8d9FIlPklExBQHqy6eCg5Q' https://lznyt9.svc.styra.com/v1/systems/f8def75058ea4c1d9317bdc3d778d8e2/assets/slp-deployment.yaml | kubectl apply -n kong -f -
 
 curl -H 'Authorization: Bearer XOGYsOLoEXfATN1xfp4AvJNfOiUHHtTJcv46QQouWZrXcEcIVxHrVShNMQ2Xyie48CmmY6iMqrsEM-w7-nL9QyrV5mkoilTSlJgoyQ' https://lznyt9.svc.styra.com/v1/systems/bd2537bbc088484897aba887a585cfe4/assets/opa-sidecar-values.yaml > opa-sidecar-values.yaml
 
