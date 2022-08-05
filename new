@@ -1,0 +1,20 @@
+2. Prerequisite
+API Gateways are extremely useful when managing access to microservices within an organiztion. It externalizes authorization decisions to a centralized authorization service which is the key for policy compliance and activity auditing.
+
+During the Kong Gateway Quick Start you will deploy a Kong Gateway and a sample web server. This will be used to simulate API calls so that you can edit and test the policies that will determine if a user is able to perform an action on a particular resource.
+
+For this Quick Start you will need a Kubernetes cluster and CLI access with kubectl.
+
+Styra strongly recommends you to create a new cluster in a clean minikube environment.
+
+For Minikube assistance see https://minikube.sigs.k8s.io/docs/start/
+
+You will need Kong Gateway installed on your system. Use Helm to install Kong via the official Helm chart, Kong for Kubernetes is an Ingress Controller based on the Open-Source Kong Gateway.
+
+Use example helm installation commands provided below and also refer to the Official Kong installation document at https://docs.konghq.com/kubernetes-ingress-controller/latest/deployment/k4k8s/
+
+# Copy command
+
+helm repo add kong https://charts.konghq.com && helm repo update && helm install kong-quickstart kong/kong -n kong --create-namespace
+
+Note - This process could take up to five minutes to complete for the first time.
