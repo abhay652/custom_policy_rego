@@ -1,19 +1,9 @@
-From "kubectl" tab,
+To see what decisions OPA has made, you can look at the decision log.
 
-1. Install Custom Kong plugin for OPA
+▸ 
+Verify that everything is set to allowed. This is because the ingress policy is populated with the default rule as allowed. This can be changed by authoring your own policies.
 
-2. Configure Kong plugin for OPA authorization
+You can inspect the inputs provided , decision, and other metadata by toggling the arrow button next to one of the decisions.
 
-NOTE - This applies the Unix Domain Socket(UDS) based configuration. Please refer the `tutorials` section in the Documentation to know how to apply HTTP based configuration
 
-3. Configure OPA to connect to DAS
-
-4. Install Styra Local Plane (SLP)
-
-From "helm values download" tab,
-
-5. Download Helm values.yaml file with OPA sidecar
-
-NOTE - If you're using HTTP based configuration in step 2, please refer to the `tutorials` section in the Documentation to know more about how to apply helm values for HTTP based deployment
-
-Update the Kong deployment to integrate with OPA for authorization
+Next: Policy authoring
