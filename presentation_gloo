@@ -4,8 +4,17 @@ https://minikube.sigs.k8s.io/docs/start/
 Install Gloo edge's `glooctl`: 
 https://docs.solo.io/gloo-edge/latest/installation/gateway/kubernetes/#install-glooctl
 
+curl -sL https://run.solo.io/gloo/install | sh
+export PATH=$HOME/.gloo/bin:$PATH
+
+glooctl version
+
+
 Install Gloo Edge Gateway: 
 https://docs.solo.io/gloo-edge/latest/installation/gateway/kubernetes/#installing-on-kubernetes-with-glooctl
+
+glooctl install gateway
+
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # 1. Install OPA deployment
