@@ -1,20 +1,21 @@
-2. Prerequisite
-API Gateways are extremely useful when managing access to microservices within an organiztion. It externalizes authorization decisions to a centralized authorization service which is the key for policy compliance and activity auditing.
+Next, accomplish the following tasks.
 
-During the Kong Gateway Quick Start you will deploy a Kong Gateway and a sample web server. This will be used to simulate API calls so that you can edit and test the policies that will determine if a user is able to perform an action on a particular resource.
+From "kubectl" tab,
 
-For this Quick Start you will need a Kubernetes cluster and CLI access with kubectl.
+1. Install Custom Kong plugin for OPA
 
-Styra strongly recommends you to create a new cluster in a clean minikube environment.
+2. Configure Kong plugin for OPA authorization
 
-For Minikube assistance see https://minikube.sigs.k8s.io/docs/start/
+NOTE - This applies the Unix Domain Socket(UDS) based configuration. Please refer the `tutorials` section in the Documentation to know how to apply HTTP based configuration
 
-You will need Kong Gateway installed on your system. Use Helm to install Kong via the official Helm chart, Kong for Kubernetes is an Ingress Controller based on the Open-Source Kong Gateway.
+3. Configure OPA to connect to DAS
 
-Use example helm installation commands provided below and also refer to the Official Kong installation document at https://docs.konghq.com/kubernetes-ingress-controller/latest/deployment/k4k8s/
+4. Install Styra Local Plane (SLP)
 
-# Copy command
+From "helm values download" tab,
 
-helm repo add kong https://charts.konghq.com && helm repo update && helm install kong-quickstart kong/kong -n kong --create-namespace
+5. Download Helm values.yaml file with OPA sidecar
 
-Note - This process could take up to five minutes to complete for the first time.
+NOTE - If you're using HTTP based configuration in step 2, please refer to the `tutorials` section in the Documentation to know more about how to apply helm values for HTTP based deployment
+
+Update the Kong deployment to integrate with OPA for authorization
