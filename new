@@ -13,3 +13,7 @@ curl -H 'Authorization: Bearer EKPRkEJSr0pnCrYxWUk_aKi5z9VjvINMPecsZhDGfZru5Aspy
 
 
 curl -H 'Authorization: Bearer 8MqYJ-KIcDiOUzP0fXVj5YU2Nc5ZugR2OKiLdlSd-nBNP6ejnEKhft4AoPcoJHZEgBqF5I6qywo' https://lznyt9.svc.styra.com/v1/system-types/template.envoy:2.0/assets/quickstart/example.yaml | kubectl apply -f -
+
+
+
+curl -H 'Authorization: Bearer mISZGH3eWmHboRdLxrYjSNkSWqTIBE9D_MR0MB5BALfiaN7ijWggsrlUBCZSijunPHUirhH4-t4' https://lznyt9.svc.styra.com/v1/system-types/template.istio:1.0/assets/quickstart/example.yaml | kubectl apply -f -
