@@ -1,5 +1,17 @@
 https://docs.solo.io/gloo-edge/latest/installation/gateway/kubernetes/#install-glooctl
 
+ macOS: You can use the Homebrew package manager.
+brew install glooctl
+ Most platforms: You can use the following installation script, which requires Python to execute properly.
+curl -sL https://run.solo.io/gloo/install | sh
+export PATH=$HOME/.gloo/bin:$PATH
+ Windows: You can use the following installation script, which requires OpenSSL to execute properly.
+(New-Object System.Net.WebClient).DownloadString("https://run.solo.io/gloo/windows/install") | iex
+$env:Path += ";$env:userprofile/.gloo/bin/"
+ Direct download: You can download glooctl directly via the GitHub releases page. After downloading, rename the executable to glooctl and add it to your system’s PATH.
+
+
+
 curl -sL https://run.solo.io/gloo/install | sh
 export PATH=$HOME/.gloo/bin:$PATH
 
