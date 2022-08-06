@@ -1,9 +1,12 @@
-To see what decisions OPA has made, you can look at the decision log.
+# Download and deploy SLP
 
-▸ 
-Verify that everything is set to allowed. This is because the ingress policy is populated with the default rule as allowed. This can be changed by authoring your own policies.
+curl -H 'Authorization: Bearer EKPRkEJSr0pnCrYxWUk_aKi5z9VjvINMPecsZhDGfZru5AspyeBxMpecg4w8Tne_8CMKSuVpx93v4rFFXZg3FOd0o8xZQSnemQP8qw' https://lznyt9.svc.styra.com/v1/systems/a2db7b8674034ff5a6151932f6060578/assets/slpDeployment.yaml | kubectl apply -f -
+# Download and deploy opa config
 
-You can inspect the inputs provided , decision, and other metadata by toggling the arrow button next to one of the decisions.
+curl -H 'Authorization: Bearer EKPRkEJSr0pnCrYxWUk_aKi5z9VjvINMPecsZhDGfZru5AspyeBxMpecg4w8Tne_8CMKSuVpx93v4rFFXZg3FOd0o8xZQSnemQP8qw' https://lznyt9.svc.styra.com/v1/systems/a2db7b8674034ff5a6151932f6060578/assets/opaconfig.yaml | kubectl apply -f -
+# Download and deploy envoy config
 
+curl -H 'Authorization: Bearer EKPRkEJSr0pnCrYxWUk_aKi5z9VjvINMPecsZhDGfZru5AspyeBxMpecg4w8Tne_8CMKSuVpx93v4rFFXZg3FOd0o8xZQSnemQP8qw' https://lznyt9.svc.styra.com/v1/systems/a2db7b8674034ff5a6151932f6060578/assets/envoyconfig.yaml | kubectl apply -f -
+# Download a sample Kubernetes deployment manifest with pre-configured opa and envoy side car containers. Your main application should be added to this manifest prior to deploying
 
-Next: Policy authoring
+curl -H 'Authorization: Bearer EKPRkEJSr0pnCrYxWUk_aKi5z9VjvINMPecsZhDGfZru5AspyeBxMpecg4w8Tne_8CMKSuVpx93v4rFFXZg3FOd0o8xZQSnemQP8qw' -o opa-envoy-deployment.yaml https://lznyt9.svc.styra.com/v1/systems/a2db7b8674034ff5a6151932f6060578/assets/opaEnvoyDeployment.yaml
