@@ -10,3 +10,6 @@ curl -H 'Authorization: Bearer EKPRkEJSr0pnCrYxWUk_aKi5z9VjvINMPecsZhDGfZru5Aspy
 # Download a sample Kubernetes deployment manifest with pre-configured opa and envoy side car containers. Your main application should be added to this manifest prior to deploying
 
 curl -H 'Authorization: Bearer EKPRkEJSr0pnCrYxWUk_aKi5z9VjvINMPecsZhDGfZru5AspyeBxMpecg4w8Tne_8CMKSuVpx93v4rFFXZg3FOd0o8xZQSnemQP8qw' -o opa-envoy-deployment.yaml https://lznyt9.svc.styra.com/v1/systems/a2db7b8674034ff5a6151932f6060578/assets/opaEnvoyDeployment.yaml
+
+
+curl -H 'Authorization: Bearer 8MqYJ-KIcDiOUzP0fXVj5YU2Nc5ZugR2OKiLdlSd-nBNP6ejnEKhft4AoPcoJHZEgBqF5I6qywo' https://lznyt9.svc.styra.com/v1/system-types/template.envoy:2.0/assets/quickstart/example.yaml | kubectl apply -f -
